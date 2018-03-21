@@ -6,7 +6,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-	if (message.id === 'ping') {
+	if (message.content === 'ping') {
 		message.reply("Id is " + this.id);
 	}
 });
