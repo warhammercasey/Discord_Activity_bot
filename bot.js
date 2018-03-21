@@ -1,15 +1,19 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
 
 var names = [];
 var lastMessageTime = [];
+
+var client = new Discord.Client({
+   autorun: true
+});
 
 client.on('ready', () => {
 	console.log('I am ready!');
 });
 
 client.on('message', function (channelID, message) {
-	bot.sendMessage({
+	message.reply('it got the thing, sendmessage is a little bitch.');
+	client.sendMessage({
 				to: channelID,
 				message: "Its getting the command, message.substring does not work for some bullshit reason"
 			});
@@ -17,16 +21,16 @@ client.on('message', function (channelID, message) {
 		var command = message.substring(1).split(' ');
 		var cmd = command[0];
 		command = command.splice(1);
-		bot.sendMessage({
+		client.sendMessage({
 				to: channelID,
 				message: "At least this part is working"
 			});
 		if(cmd == "lastMessage") {
-			bot.sendMessage({
+			client.sendMessage({
 				to: channelID,
 				message: "Your dumbass needs quotes or something"
 			});
-			bot.sendMessage({
+			client.sendMessage({
 				to: channelID,
 				message: message.mentions.users.first() + " last logged in at "
 			});
