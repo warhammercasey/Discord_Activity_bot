@@ -7,7 +7,7 @@ client.on('ready', () => {
 	console.log('I am ready!');
 });
 
-clinet.on('message', message=> {
+clinet.on('message', message => {
 	if (message.content == 'ping') {
 		message.reply('pong');
 	}
