@@ -4,9 +4,11 @@
 	"description": "My own Discord bot",
 	"main": "bot.js",
 	"author": "warhammercasey",
+	"scripts": {
+		"start": "node bot.js"
+	},
 	"dependencies": {
-		"discord.io": "^2.5.3",
-		"git": "^0.1.5",
-		"winston": "^2.4.1"
+		"discord.js": "^11.1.0",
+		"request": "^2.81.0"
 	}
 }
