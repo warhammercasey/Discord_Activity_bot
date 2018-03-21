@@ -13,7 +13,7 @@ client.on('message', message => {
 			console.log(String(message.mentions.users.first()));
 			console.log(String(message.mentions.users.first().lastMessage));
 			message.reply("Got message, time is: ");
-			message.reply(message.mentions.users.first().lastMessage.createdAt);
+			message.reply(String(message.mentions.users.first().lastMessage.createdAt));
 		}
 	}
 });
