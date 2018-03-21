@@ -1,8 +1,4 @@
 const Discord = require('discord.js');
-
-var names = [];
-var lastMessageTime = [];
-
 var client = new Discord.Client({
    autorun: true
 });
