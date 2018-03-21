@@ -8,6 +8,7 @@ client.on('ready', () => {
 client.on('message', message => {
 	if(message.content.charAt(0) == '!') {
 		if(message.content.subString(1, 8) == lastLog){
+			message.reply("Got message, time is: ");
 			message.reply(message.mentions.users.first().lastMessage.createdAt);
 		}
 	}
