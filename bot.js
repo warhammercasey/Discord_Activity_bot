@@ -6,7 +6,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-	console.log(message.content);
+	console.log(message.content.charAt(0));
 	if(message.content.charAt(0) == '!') {
 		message.reply("Recognised '!'.");
 		if(message.content.subString(1, 8) == lastLog){
