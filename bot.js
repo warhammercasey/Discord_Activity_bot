@@ -7,9 +7,11 @@ client.on('ready', () => {
 
 client.on('message', message => {
 	if(message.content.charAt(0) == '!') {
-		console.log(message.content.substr(1, message.content.indexOf(" ")));
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "lastLog"){
-			console.log("Command is lastLog");
+			console.log(String(message.mentions));
+			console.log(String(message.mentions.users));
+			console.log(String(message.mentions.users.first()));
+			console.log(String(message.mentions.users.first().lastMessage));
 			message.reply("Got message, time is: ");
 			message.reply(message.mentions.users.first().lastMessage.createdAt);
 		}
