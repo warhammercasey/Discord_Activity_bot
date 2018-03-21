@@ -1,7 +1,5 @@
 const Discord = require('discord.js');
-var client = new Discord.Client({
-   autorun: true
-});
+var client = new Discord.Client();
 
 client.on('ready', () => {
 	console.log('I am ready!');
