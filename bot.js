@@ -6,8 +6,8 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-	if (message.content === 'ping') {
-		message.reply("Id is " + this.id);
+	if (message.content === 'will you be my friend discord bot?') {
+		message.reply("No, stop fucking asking me");
 	}
 });
 
