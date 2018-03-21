@@ -6,8 +6,10 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-	if (message.content == 'ping') {
-		message.reply('pong');
+	if(message.content.charAt(0) == '!') {
+		if(message.content.subString(1, 8) == lastLog){
+			message.reply(message.mentions.users.first().lastMessage.createdAt);
+		}
 	}
 });
 
