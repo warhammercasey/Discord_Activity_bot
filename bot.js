@@ -6,9 +6,8 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-	console.log(message.content.charAt(0));
 	if(message.content.charAt(0) == '!') {
-		console.log("Recognised '!'.");
+		console.log(message.content.substr(0, message.content.indexOf(" ")));
 		if(message.content.substr(0, message.content.indexOf(" ")) == "lastLog"){
 			message.reply("Got message, time is: ");
 			message.reply(message.mentions.users.first().lastMessage.createdAt);
