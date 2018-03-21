@@ -9,6 +9,10 @@ client.on('ready', () => {
 });
 
 client.on('message', function (channelID, message) {
+	bot.sendMessage({
+				to: channelID,
+				message: "Its getting the command, message.substring does not work for some bullshit reason"
+			});
 	if (message.substring(0, 1) == '!') {
 		var command = message.substring(1).split(' ');
 		var cmd = command[0];
