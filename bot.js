@@ -34,7 +34,7 @@ client.on('message', message => {
 			var membersArray = Guild.members.array().slice();
 			for(int i = 0; i < Guild.members.array().length; i++){
 				if(membersArray[i].user.lastMessage != null){
-					
+					if(newDate - //TODO check time since last message
 				}else{
 					assignedChannel.send("Inactivity of user " + membersArray[i].user.username + " is null. Either this person hasent spoken since the bot was last updated (Updated at " + createdDate + ") or this is a bug. If you are sure they have spoken report this to warhammercas and he'll try to fix it.")
 						.then(message => console.log(`Sent message: ${message.content}`))
