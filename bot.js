@@ -31,7 +31,8 @@ client.on('message', message => {
 			}
 		}
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "msgsSince"){
-			var messageContent = message.content.split(" ").pop().pop();
+			var messageContent = message.content.split(" ").pop();
+			messageContent = messageContent.pop();
 			console.log("Message Content: " + messageContent);
 		}
 	}
