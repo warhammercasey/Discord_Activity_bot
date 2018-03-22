@@ -5,7 +5,7 @@ var createdDate = new Date();
 var hasFirstDate = false;
 var assignedChannel;
 
-var inactives = [];
+var guildMembers;
 
 client.on('ready', () => {
 	console.log('I am ready!');
@@ -15,12 +15,15 @@ client.on('message', message => {
 	if(!hasFirstDate){
 		createdDate = message.createdAt;
 		hasFirstDate = true;
+		guildMembers = message.guild.fetchMembers();
 	}
+	console.log(guildMembers);
 	if(message.mentions.users.first() == client.user){
 		assignedChannel = message.channel;
 	}
 	console.log("Channel: " + assignedChannel);
 	console.log("Guild available: " + message.guild.available);
+	
 	
 	if(message.content.charAt(0) == '!') {
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "lastLog"){
