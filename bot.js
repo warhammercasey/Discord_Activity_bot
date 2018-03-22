@@ -16,7 +16,7 @@ client.on('message', message => {
 		createdDate = message.createdAt;
 		hasFirstDate = true;
 		guildMembers = [message.guild.memberCount];
-		console.log(message.guild.members);
+		//console.log(message.guild.members);
 		guildMembers = message.guild.members.array();
 		//for(i = 0; i < message.guild.memberCount; i++){
 		//	guildMembers.push(message.guild.members.get(i));
