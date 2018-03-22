@@ -7,6 +7,7 @@ var assignedChannel;
 
 var guildMembers = [];
 var guildUsers = [];
+var userMessageTimes = [];
 
 client.on('ready', () => {
 	console.log('I am ready!');
@@ -29,6 +30,8 @@ client.on('message', message => {
 	console.log("Channel: " + assignedChannel);
 	console.log("Guild available: " + message.guild.available);
 	
+	//TODO set message times to map/collection of guildUsers or guildMembers
+	
 	
 	if(message.content.charAt(0) == '!') {
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "lastLog"){
@@ -48,8 +51,7 @@ client.on('message', message => {
 
 client.on('guildMemberAdd', member => {
 	guildUsers[guildUsers.length] = member.user;
-	console.log("-------------------------------------------------------------");
-	console.log(guildUsers);
+	console.log("Added user: " + member.user);
 });
 
 client.login(process.env.BOT_TOKEN);
