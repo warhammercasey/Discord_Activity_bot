@@ -48,6 +48,8 @@ client.on('message', message => {
 
 client.on('guildMemberAdd', guildMember => {
 	guildMembers.push(guildMember);
+	console.log("-------------------------------------------------------------");
+	console.log(guildMembers);
 });
 
 client.login(process.env.BOT_TOKEN);
