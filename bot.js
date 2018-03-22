@@ -23,6 +23,9 @@ client.on('message', message => {
 	if(message.mentions.users.first() == client.user){
 		assignedChannel = message.channel;
 	}
+	console.log("Dates: " + newDate + oldDate + createdDate);
+	console.log("Channel: " + assignedChannel);
+	console.log("Guild available: " guild.available);
 	messageCount++;
 	if(messageCount >= 20){
 		messageCount = 0;
