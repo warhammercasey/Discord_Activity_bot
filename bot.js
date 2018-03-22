@@ -47,7 +47,7 @@ client.on('message', message => {
 						assignedChannel.send(":regional_indicator_i: to ignore")
 							.then(message => console.log(`Sent message: ${message.content}`))
 							.catch(console.error);
-						const filter = (reaction, reaction, reaction) => reaction.emoji.name === ':regional_indicator_k:' && reaction.emoji.name === ':regional_indicator_w:' && reaction.emoji.name === ':regional_indicator_i:'
+						const filter = (reaction1, reaction2, reaction3) => reaction.emoji.name === ':regional_indicator_k:' && reaction.emoji.name === ':regional_indicator_w:' && reaction.emoji.name === ':regional_indicator_i:'
 						message.awaitReactions(filter, { time: 15000 })
 							.then(collected => console.log(`Collected ${collected.size} reactions`))
 							.catch(console.error);
