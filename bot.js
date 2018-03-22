@@ -15,7 +15,7 @@ client.on('message', message => {
 	if(!hasFirstDate){
 		createdDate = message.createdAt;
 		hasFirstDate = true;
-		guildMembers = message.guild.fetchMembers().members.array();
+		guildMembers = message.guild.members.array();
 	}
 	console.log(guildMembers);
 	if(message.mentions.users.first() == client.user){
