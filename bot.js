@@ -39,7 +39,7 @@ client.on('message', message => {
 			var membersArray = Guild.members.array().slice();
 			for(i = 0; i < Guild.members.array().length; i++){
 				if(membersArray[i].user.lastMessage != null){
-					if(newDate - membersArray[i].user.lastMessage.createdAt >= 10000){ //1209600000 = 2 weeks
+					if(newDate - membersArray[i].user.lastMessage.createdAt >= 1000000){ //1209600000 = 2 weeks
 						assignedChannel.send("Inactive: " + membersArray[i].user.username + " has not sent a recorded message in over 2 weeks.")
 							.then(message => console.log(`Sent message: ${message.content}`))
 							.catch(console.error);
