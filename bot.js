@@ -23,7 +23,6 @@ client.on('message', message => {
 			guildUsers.push(guildMembers[i].user);
 		}
 	}
-	console.log(guildUsers);
 	if(message.mentions.users.first() == client.user){
 		assignedChannel = message.channel;
 	}
