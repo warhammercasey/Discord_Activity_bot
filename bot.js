@@ -48,7 +48,7 @@ client.on('message', message => {
 });
 
 client.on('guildMemberAdd', member => {
-	guildUsers.push(member.user);
+	guildUsers[guildUsers.length] = member.user;
 	console.log("-------------------------------------------------------------");
 	console.log(guildUsers);
 });
