@@ -23,7 +23,7 @@ client.on('message', message => {
 	console.log("Guild available: " + message.guild.available);
 	
 	set fso = CreateObject("Scripting.FileSystemObject"); 
-	set s = fso.CreateTextFile("\test.txt", True);
+	set s = fso.CreateTextFile("/test.txt", True);
 	
 	if(message.content.charAt(0) == '!') {
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "lastLog"){
