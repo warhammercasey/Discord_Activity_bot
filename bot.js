@@ -22,10 +22,6 @@ client.on('message', message => {
 	console.log("Channel: " + assignedChannel);
 	console.log("Guild available: " + message.guild.available);
 	
-	var myObject, newfile;
-        myObject = new ActiveXObject("Scripting.FileSystemObject");
-        newfile = myObject.CreateTextFile("c:\\testing.txt", false);
-	
 	if(message.content.charAt(0) == '!') {
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "lastLog"){
 			if(message.mentions.users.first().lastMessage != null){
@@ -36,5 +32,14 @@ client.on('message', message => {
 		}
 	}
 });
+
+var fs = require('fs');
+fs.writeFile("/tmp/test", "Hey there!", function(err) {
+    if(err) {
+        return console.log(err);
+    }
+
+    console.log("The file was saved!");
+}); 
 
 client.login(process.env.BOT_TOKEN);
