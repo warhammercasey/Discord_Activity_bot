@@ -9,11 +9,9 @@ var createdDate = new Date();
 var hasFirstDate = false;
 var assignedChannel;
 
-var Guild = new guild();
 
 client.on('ready', () => {
 	console.log('I am ready!');
-	Guild.fetchMembers();
 });
 
 client.on('message', message => {
@@ -28,7 +26,7 @@ client.on('message', message => {
 	}
 	console.log("Dates: " + newDate + oldDate + createdDate);
 	console.log("Channel: " + assignedChannel);
-	console.log("Guild available: " + Guild.available);
+	console.log("Guild available: " + message.guild.available);
 	messageCount++;
 	if(messageCount >= 20){
 		messageCount = 0;
@@ -37,6 +35,7 @@ client.on('message', message => {
 				.then(message => console.log(`Sent message: ${message.content}`))
 				.catch(console.error);
 			oldDate = newDate;
+			var Guild = message.guild;
 			var membersArray = Guild.members.array().slice();
 			for(i = 0; i < Guild.members.array().length; i++){
 				if(membersArray[i].user.lastMessage != null){
