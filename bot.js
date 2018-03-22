@@ -12,9 +12,9 @@ client.on('message', message => {
 			console.log(String(message.mentions.users));
 			console.log(String(message.mentions.users.first()));
 			console.log(String(message.mentions.users.first().lastMessage));
-			console.log(String(message.mentions.users.first().lastMessage.createdTimestamp));
+			console.log(String(message.mentions.users.first().lastMessage.createdAt));
 			message.reply("Got message, time is: ");
-			message.reply(String(message.mentions.users.first().lastMessage.createdTimestamp));
+			message.reply(String(message.mentions.users.first().lastMessage.createdAt));
 		}
 	}
 });
