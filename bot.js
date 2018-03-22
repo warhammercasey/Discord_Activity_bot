@@ -9,11 +9,11 @@ var createdDate = new Date();
 var hasFirstDate = false;
 var assignedChannel;
 
-var guild = new Guild();
+var Guild = new guild();
 
 client.on('ready', () => {
 	console.log('I am ready!');
-	guild.fetchMembers();
+	Guild.fetchMembers();
 });
 
 client.on('message', message => {
@@ -28,7 +28,7 @@ client.on('message', message => {
 	}
 	console.log("Dates: " + newDate + oldDate + createdDate);
 	console.log("Channel: " + assignedChannel);
-	console.log("Guild available: " + guild.available);
+	console.log("Guild available: " + Guild.available);
 	messageCount++;
 	if(messageCount >= 20){
 		messageCount = 0;
@@ -37,8 +37,8 @@ client.on('message', message => {
 				.then(message => console.log(`Sent message: ${message.content}`))
 				.catch(console.error);
 			oldDate = newDate;
-			var membersArray = guild.members.array().slice();
-			for(i = 0; i < guild.members.array().length; i++){
+			var membersArray = Guild.members.array().slice();
+			for(i = 0; i < Guild.members.array().length; i++){
 				if(membersArray[i].user.lastMessage != null){
 					if(newDate - membersArray[i].user.lastMessage.createdAt >= 10000){ //1209600000 = 2 weeks
 						assignedChannel.send("Inactive: " + membersArray[i].user.username + " has not sent a recorded message in over 2 weeks.")
