@@ -6,6 +6,7 @@ var hasFirstDate = false;
 var assignedChannel;
 
 var guildMembers = [];
+var guildUsers = [];
 
 client.on('ready', () => {
 	console.log('I am ready!');
@@ -18,11 +19,11 @@ client.on('message', message => {
 		guildMembers = [message.guild.memberCount];
 		//console.log(message.guild.members);
 		guildMembers = message.guild.members.array();
-		//for(i = 0; i < message.guild.memberCount; i++){
-		//	guildMembers.push(message.guild.members.get(i));
-		//}
+		for(i = 0; i < message.guild.memberCount; i++){
+			guildUsers.push(guildMembers[i].user);
+		}
 	}
-	console.log(guildMembers);
+	console.log(guildUsers);
 	if(message.mentions.users.first() == client.user){
 		assignedChannel = message.channel;
 	}
@@ -46,10 +47,10 @@ client.on('message', message => {
 	}
 });
 
-client.on('guildMemberAdd', guildMember => {
-	guildMembers.push(guildMember);
+client.on('guildMemberAdd', member => {
+	guildUsers.push(member.user);
 	console.log("-------------------------------------------------------------");
-	console.log(guildMembers);
+	console.log(guildUsers);
 });
 
 client.login(process.env.BOT_TOKEN);
