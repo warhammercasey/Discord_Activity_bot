@@ -30,6 +30,10 @@ client.on('message', message => {
 				message.reply("The last message by that user dosent seem to exist. Either this person hasent spoken since the bot was last updated (Updated at " + createdDate + ") or this is a bug. If you are sure they have spoken report this to warhammercas and he'll try to fix it.");
 			}
 		}
+		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "msgsSince"){
+			var messageContent = message.content.split(" ").pop().pop();
+			console.log("Message Content: " + messageContent);
+		}
 	}
 });
 
