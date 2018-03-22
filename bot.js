@@ -11,10 +11,10 @@ client.on('message', message => {
 			console.log(String(message.mentions));
 			console.log(String(message.mentions.users));
 			console.log(String(message.mentions.users.first()));
-			console.log(String(message.mentions.users.lastMessage));
-			console.log(String(message.mentions.users.lastMessage.createdAt));
+			console.log(String(message.mentions.users.first([0]).lastMessage));
+			console.log(String(message.mentions.users.first([0]).lastMessage.createdAt));
 			message.reply("Got message, time is: ");
-			message.reply(String(message.mentions.users.lastMessage.createdAt));
+			message.reply(String(message.mentions.users.first([0]).lastMessage.createdAt));
 		}
 	}
 });
