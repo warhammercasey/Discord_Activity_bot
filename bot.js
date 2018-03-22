@@ -18,6 +18,7 @@ client.on('message', message => {
 	if(!hasFirstDate){
 		oldDate = message.createdAt;
 		createdDate = message.createdAt;
+		hasFirstDate = true;
 	}
 	if(message.mentions.users.first() == client.user){
 		assignedChannel = message.channel;
@@ -26,10 +27,19 @@ client.on('message', message => {
 	if(messageCount >= 20){
 		messageCount = 0;
 		if(newDate - oldDate >= 86400000){
+			assignedChannel.send("Checking inactivity times...")
+				.then(message => console.log(`Sent message: ${message.content}`))
+				.catch(console.error);
 			oldDate = newDate;
 			var membersArray = Guild.members.array().slice();
 			for(int i = 0; i < Guild.members.array().length; i++){
-				if(membersArray[i].lastMessage
+				if(membersArray[i].user.lastMessage != null){
+					
+				}else{
+					assignedChannel.send("Inactivity of user " + membersArray[i].user.username + " is null. Either this person hasent spoken since the bot was last updated (Updated at " + createdDate + ") or this is a bug. If you are sure they have spoken report this to warhammercas and he'll try to fix it.")
+						.then(message => console.log(`Sent message: ${message.content}`))
+						.catch(console.error);
+				}
 			}
 		}
 	}
@@ -44,7 +54,7 @@ client.on('message', message => {
 			if(message.mentions.users.first().lastMessage != null){
 				message.reply(String(message.mentions.users.first().lastMessage.createdAt));
 			}else{
-				message.reply("The last message by that user dosent seem to exist. Either this person hasent spoken since the bot was last updated (Updated at " + createdDate + ") or this is a bug. If you are sure they have spoken report this to warhammercas and he'll try to fix it.")
+				message.reply("The last message by that user dosent seem to exist. Either this person hasent spoken since the bot was last updated (Updated at " + createdDate + ") or this is a bug. If you are sure they have spoken report this to warhammercas and he'll try to fix it.");
 			}
 		}
 	}
