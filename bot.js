@@ -25,7 +25,7 @@ client.on('message', message => {
 	}
 	console.log("Dates: " + newDate + oldDate + createdDate);
 	console.log("Channel: " + assignedChannel);
-	console.log("Guild available: " guild.available);
+	console.log("Guild available: " + guild.available);
 	messageCount++;
 	if(messageCount >= 20){
 		messageCount = 0;
