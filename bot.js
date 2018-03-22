@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-\
 
 var createdDate = new Date();
 var hasFirstDate = false;
