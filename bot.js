@@ -68,11 +68,6 @@ client.on('message', message => {
 	
 	if(message.content.charAt(0) == '!') {
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "lastLog"){
-			console.log(String(message.mentions));
-			console.log(String(message.mentions.users));
-			console.log(String(message.mentions.users.first()));
-			console.log(String(message.mentions.users.first().lastMessage));
-			console.log(String(message.mentions.users.first().lastMessage.createdAt));
 			if(message.mentions.users.first().lastMessage != null){
 				message.reply(String(message.mentions.users.first().lastMessage.createdAt));
 			}else{
