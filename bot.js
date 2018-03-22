@@ -22,8 +22,9 @@ client.on('message', message => {
 	console.log("Channel: " + assignedChannel);
 	console.log("Guild available: " + message.guild.available);
 	
-	var fso = CreateObject("Scripting.FileSystemObject"); 
-	var s = fso.CreateTextFile("/test.txt", True);
+	var myObject, newfile;
+        myObject = new ActiveXObject("Scripting.FileSystemObject");
+        newfile = myObject.CreateTextFile("c:\\testing.txt", false);
 	
 	if(message.content.charAt(0) == '!') {
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "lastLog"){
