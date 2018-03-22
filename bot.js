@@ -43,19 +43,6 @@ client.on('message', message => {
 						assignedChannel.send("Inactive: " + membersArray[i].user.username + " has not sent a recorded message in over 2 weeks.")
 							.then(message => console.log(`Sent message: ${message.content}`))
 							.catch(console.error);
-						assignedChannel.send(":regional_indicator_k: to kick")
-							.then(message => console.log(`Sent message: ${message.content}`))
-							.catch(console.error);
-						assignedChannel.send(":regional_indicator_w: to send warning message")
-							.then(message => console.log(`Sent message: ${message.content}`))
-							.catch(console.error);
-						assignedChannel.send(":regional_indicator_i: to ignore")
-							.then(message => console.log(`Sent message: ${message.content}`))
-							.catch(console.error);
-						const filter = (reaction1, reaction2, reaction3) => reaction.emoji.name === ':regional_indicator_k:' && reaction.emoji.name === ':regional_indicator_w:' && reaction.emoji.name === ':regional_indicator_i:'
-						message.awaitReactions(filter, { time: 15000 })
-							.then(collected => console.log(`Collected ${collected.size} reactions`))
-							.catch(console.error);
 					}
 				}else{
 					assignedChannel.send("Inactivity of user " + membersArray[i].user.username + " is null. Either this person hasent spoken since the bot was last updated (Updated at " + createdDate + ") or this is a bug. If you are sure they have spoken report this to warhammercas and he'll try to fix it.")
