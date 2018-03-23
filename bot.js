@@ -63,6 +63,7 @@ client.on('message', message => {
 			// to get string between * and * -- var messageContent = message.content.substr(message.content.indexOf('*') + 1, message.content.indexOf('*', message.content.indexOf('*') + 1) - 1).slice(0, -1);
 			if(totalVCTime[guildUsers.indexOf(message.mentions.users.first())] != null){
 				message.reply(message.mentions.users.first().username + " has spent " + totalVCTime[guildUsers.indexOf(message.mentions.users.first())] + "ms in voice chat since this bot was last updated (last updated at " + createdDate + ").");
+				console.log("Time joined voice channel: " + voiceChannelJoin[guildUsers.indexOf(message.mentions.users.first());
 			}else{
 				message.reply(message.mentions.users.first().username + " hasent connected to voice chat since the bot was last updated. (last updated at " + createdDate + ").");
 			}
