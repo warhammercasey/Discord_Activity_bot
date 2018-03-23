@@ -86,8 +86,9 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 			.catch(console.error);
 		console.log(newMember.user.username + " has joined a voice channel.");
 	}else if(oldMember.voiceChannel != null && newMember.voiceChannel == null){
+		console.log("Unset total voice chat time: " + totalVCTime[guildUsers.indexOf(newMember.user)])
 		assignedChannel.send('Timer (ignore this)')
-			.then(message => /*totalVCTime[guildUsers.indexOf(newMember.user)] += */console.log("Time in voice channel: " + (message.createdAt - voiceChannelJoin[guildUsers.indexOf(newMember.user)])))
+			.then(message => totalVCTime[guildUsers.indexOf(newMember.user)] += "Time in voice channel: " + (message.createdAt - voiceChannelJoin[guildUsers.indexOf(newMember.user)]))
 			.catch(console.error);
 	}
 });
