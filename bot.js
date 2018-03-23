@@ -22,6 +22,7 @@ client.on('message', message => {
 	if(message.mentions.users.first() == client.user){
 		assignedChannel = message.channel;
 	}
+	console.log(guildMembers);
 	console.log("Channel: " + assignedChannel);
 	console.log("Guild available: " + message.guild.available);
 	
