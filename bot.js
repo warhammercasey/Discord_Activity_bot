@@ -74,7 +74,7 @@ client.on('message', message => {
 	
 	if(message.content.charAt(0) == '!') {
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "lastMsg"){
-			if(message.mentions.users.first() != undefined){
+			if(message.mentions.users.first() != undefined && message.mentions.users.first().lastMessage != null){
 				message.reply(String(message.mentions.users.first().lastMessage.createdAt));
 			}else{
 				message.reply("The last message by that user dosent seem to exist. Either this person hasent spoken since the bot was last updated (Updated at " + createdDate + ") or this is a bug. If you are sure they have spoken report this to warhammercas and he'll try to fix it.");
