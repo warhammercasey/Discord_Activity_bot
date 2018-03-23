@@ -13,6 +13,8 @@ var totalMessages = [];
 var voiceChannelJoin = [];
 var totalVCTime = [];
 
+var canCheckMessages = false;
+
 client.on('ready', () => {
 	console.log('I am ready!');
 });
@@ -32,6 +34,7 @@ client.on('message', message => {
 		totalVCTime = [guildUsers.length];
 	}
 	if(message.mentions.users.first() == client.user){
+		canCheckMessages = false;
 		assignedChannel = message.channel;
 		assignedChannel.send('I have now been assigned to this channel.')
 			.then(message => console.log(`Sent start message: ${message.content}`))
@@ -57,7 +60,9 @@ client.on('message', message => {
 		assignedChannel.send('Remember that until a database is set up, the data collected is temporary, and will be reset if the bot is restarted or updated.')
 			.then(message => console.log(`Sent start message: ${message.content}`))
 			.catch(console.error);
+		canCheckMessages = true;
 	}
+	if(!canCheckMessages){return;}
 	
 	
 	if(totalMessages[guildUsers.indexOf(message.author)] == null){
