@@ -87,7 +87,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 		console.log(newMember.user.username + " has joined a voice channel.");
 	}else if(oldMember.voiceChannel != null && newMember.voiceChannel == null){
 		assignedChannel.send('Timer (ignore this)')
-			.then(message => totalVCTime[guildUsers.indexOf(newMember.user)] += message.createdAt - voiceChannelJoin[guildUsers.indexOf(newMember.user)], console.log("VC left at: " + message.createdAt))
+			.then(message => totalVCTime[guildUsers.indexOf(newMember.user)] += message.createdAt - voiceChannelJoin[guildUsers.indexOf(newMember.user)], message => console.log("VC left at: " + message.createdAt))
 			.catch(console.error);
 	}
 });
