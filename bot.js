@@ -29,15 +29,14 @@ client.on('message', message => {
 	if(message.mentions.users.first() == client.user){
 		assignedChannel = message.channel;
 	}
-	console.log("Channel: " + assignedChannel);
-	console.log("Guild available: " + message.guild.available);
+	
 	
 	if(totalMessages[guildUsers.indexOf(message.author)] == null){
 		totalMessages[guildUsers.indexOf(message.author)] = 1;
 	}else{
 		totalMessages[guildUsers.indexOf(message.author)]++;
 	}
-	console.log(totalMessages[guildUsers.indexOf(message.author)]);
+	
 	
 	if(message.content.charAt(0) == '!') {
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "lastLog"){
@@ -47,12 +46,17 @@ client.on('message', message => {
 				message.reply("The last message by that user dosent seem to exist. Either this person hasent spoken since the bot was last updated (Updated at " + createdDate + ") or this is a bug. If you are sure they have spoken report this to warhammercas and he'll try to fix it.");
 			}
 		}
-		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "msgsSince"){
-			var messageContent = message.content.substr(message.content.indexOf('*') + 1, message.content.indexOf('*', message.content.indexOf('*') + 1) - 1).slice(0, -1);
-			
-			console.log("Message Content: " + messageContent);
+		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "totalMessages"){
+			// to get string between * and * -- var messageContent = message.content.substr(message.content.indexOf('*') + 1, message.content.indexOf('*', message.content.indexOf('*') + 1) - 1).slice(0, -1);
+			if(totalMessages[guildUsers.indexOf(message.mentions.users.first())] != null){
+				message.reply(message.mentions.users.first().username + " has sent " + totalMessages[guildUsers.indexOf(message.mentions.users.first())] + " messages since this bot was last updated (last updated at " + createdDate + ").");
+			}else{
+				message.reply(message.mentions.users.first().username + " hasent sent any messages since the bot was last updated. (last updated at " + createdDate + ").");
+			}
 		}
 	}
+	console.log("Channel: " + assignedChannel);
+	console.log(message.author.username + " has sent " + totalMessages[guildUsers.indexOf(message.author)] + " in this server.");
 });
 
 client.on('guildMemberAdd', member => {
