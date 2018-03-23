@@ -6,7 +6,9 @@ var hasFirstDate = false;
 var assignedChannel;
 
 var guildMembers = [];
+var guildUsers = [];
 var userMessageTimes = [];
+var totalMessages = [];
 
 client.on('ready', () => {
 	console.log('I am ready!');
@@ -16,18 +18,26 @@ client.on('message', message => {
 	if(!hasFirstDate){
 		createdDate = message.createdAt;
 		hasFirstDate = true;
-		//console.log(message.guild.members);
-		guildMembers = message.guild.members;
+		guildMembers = [message.guild.memberCount];
+ 		//console.log(message.guild.members);
+		guildMembers = message.guild.members.array();
+		for(i = 0; i < message.guild.memberCount; i++){
+			guildUsers.push(guildMembers[i].user);
+		}
+		totalMessages = [guildUsers.length];
 	}
 	if(message.mentions.users.first() == client.user){
 		assignedChannel = message.channel;
 	}
-	console.log(guildMembers);
 	console.log("Channel: " + assignedChannel);
 	console.log("Guild available: " + message.guild.available);
 	
-	//TODO set message times to map/collection of guildUsers or guildMembers
-	
+	if(totalMessages[guildUsers.indexOf(message.author)] == null){
+		totalMessages[guildUsers.indexOf(message.author)] = 1;
+	}else{
+		totalMessages[guildUsers.indexOf(message.author)]++;
+	}
+	console.log(totalMessages[guildUsers.indexOf(message.author)]);
 	
 	if(message.content.charAt(0) == '!') {
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "lastLog"){
@@ -46,8 +56,8 @@ client.on('message', message => {
 });
 
 client.on('guildMemberAdd', member => {
-	guildMembers.set(Member, member);
-	console.log(guildMembers);
+	guildUsers.push(member.user);
+	totalMessages = [guildUsers.length];
 	console.log("Added user: " + member.user);
 });
 
