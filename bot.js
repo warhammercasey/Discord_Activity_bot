@@ -42,19 +42,19 @@ client.on('message', message => {
 		assignedChannel.send('To change the assigned channel just mention me somewhere else.')
 			.then(message => console.log(`Sent start message: ${message.content}`))
 			.catch(console.error);
-		assignedChannel.send('Commands:')
+		assignedChannel.send('Commands (begin all with !):')
 			.then(message => console.log(`Sent start message: ${message.content}`))
 			.catch(console.error);
-		assignedChannel.send('!lastMsg <mention user> - Displays the last time that user sent a message.')
+		assignedChannel.send('lastMsg <mention user> - Displays the last time that user sent a message.')
 			.then(message => console.log(`Sent start message: ${message.content}`))
 			.catch(console.error);
-		assignedChannel.send('!lastVC <mention user> - Displays the last time that user joined a voice channel.')
+		assignedChannel.send('lastVC <mention user> - Displays the last time that user joined a voice channel.')
 			.then(message => console.log(`Sent start message: ${message.content}`))
 			.catch(console.error);
-		assignedChannel.send('!totalMessages <mention user> - Displays how many messages that user has sent.')
+		assignedChannel.send('totalMessages <mention user> - Displays how many messages that user has sent.')
 			.then(message => console.log(`Sent start message: ${message.content}`))
 			.catch(console.error);
-		assignedChannel.send('!VCTime <mention user> - Displays how much time that user has spent in any voice chat.')
+		assignedChannel.send('VCTime <mention user> - Displays how much time that user has spent in any voice chat.')
 			.then(message => console.log(`Sent start message: ${message.content}`))
 			.catch(console.error);
 		assignedChannel.send('Remember that until a database is set up, the data collected is temporary, and will be reset if the bot is restarted or updated.')
@@ -74,7 +74,7 @@ client.on('message', message => {
 	
 	if(message.content.charAt(0) == '!') {
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "lastMsg"){
-			if(message.mentions.users.first().lastMessage != null){
+			if(message.mentions.users.first() != undefined){
 				message.reply(String(message.mentions.users.first().lastMessage.createdAt));
 			}else{
 				message.reply("The last message by that user dosent seem to exist. Either this person hasent spoken since the bot was last updated (Updated at " + createdDate + ") or this is a bug. If you are sure they have spoken report this to warhammercas and he'll try to fix it.");
