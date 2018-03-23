@@ -90,7 +90,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 			totalVCTime[guildUsers.indexOf(newMember.user)] = 0;
 		}
 		assignedChannel.send('Timer (ignore this)')
-			.then(message => totalVCTime[guildUsers.indexOf(newMember.user)] += "Time in voice channel: " + (message.createdAt - voiceChannelJoin[guildUsers.indexOf(newMember.user)]))
+			.then(message => totalVCTime[guildUsers.indexOf(newMember.user)] += (message.createdAt - voiceChannelJoin[guildUsers.indexOf(newMember.user)]))
 			.catch(console.error);
 	}
 });
