@@ -18,7 +18,6 @@ client.on('message', message => {
 		hasFirstDate = true;
 		//console.log(message.guild.members);
 		guildMembers = message.guild.members;
-		}
 	}
 	if(message.mentions.users.first() == client.user){
 		assignedChannel = message.channel;
