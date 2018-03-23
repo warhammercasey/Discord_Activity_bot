@@ -84,8 +84,8 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 		console.log(newMember.user.username + " has joined a voice channel.");
 		console.log("Time is: " + new Date().getTime());
 	}else if(oldMember.voiceChannel != null && newMember.voiceChannel == null){
-		totalVCTime[guildUsers.indexOf(newMember.user)] += new Date().getTime() - voiceChannelJoin[guildUsers.indexOf(newMember.user)];
-		console.log(newMember.user.username + " has spent " + new Date().getTime() - voiceChannelJoin[guildUsers.indexOf(newMember.user)] + "ms in voice chat.");
+		totalVCTime[guildUsers.indexOf(newMember.user)] += toInt(new Date().getTime()) - toInt(voiceChannelJoin[guildUsers.indexOf(newMember.user)]);
+		console.log(newMember.user.username + " has spent " + toInt(new Date().getTime()) - toInt(voiceChannelJoin[guildUsers.indexOf(newMember.user)]) + "ms in voice chat.");
 		console.log("Time is: " + new Date().getTime());
 	}
 });
