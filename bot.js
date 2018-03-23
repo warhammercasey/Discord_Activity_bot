@@ -10,6 +10,9 @@ var guildUsers = [];
 var userMessageTimes = [];
 var totalMessages = [];
 
+var voiceChannelJoin = [];
+var totalVCTime = [];
+
 client.on('ready', () => {
 	console.log('I am ready!');
 });
@@ -25,6 +28,8 @@ client.on('message', message => {
 			guildUsers.push(guildMembers[i].user);
 		}
 		totalMessages = [guildUsers.length];
+		voiceChannelJoin = [guildUsers.length];
+		totalVCTime = [guildUsers.length];
 	}
 	if(message.mentions.users.first() == client.user){
 		assignedChannel = message.channel;
@@ -63,6 +68,16 @@ client.on('guildMemberAdd', member => {
 	guildUsers.push(member.user);
 	totalMessages = [guildUsers.length];
 	console.log("Added user: " + member.user);
+});
+
+client.on('voiceStateUpdate', (oldMember, newMember) => {
+	if(oldMember.voiceChannel == null && newMember.voiceChannel != null){
+		voiceChannelJoin[guildUsers.indexOf(newMember.user)] = new Date().getTime();
+		console.log(newMember.user.username + " has joined a voice channel.");
+	}else if{
+		totalVCTime[guildUsers.indexOf(newMember.user)] += new Date().getTime() - voiceChannelJoin[guildUsers.indexOf(newMember.user)];
+		console.log(newMember.user.username + " has spent " + new Date().getTime() - voiceChannelJoin[guildUsers.indexOf(newMember.user)] + "ms in voice chat.");
+	}
 });
 
 client.login(process.env.BOT_TOKEN);
