@@ -59,6 +59,14 @@ client.on('message', message => {
 				message.reply(message.mentions.users.first().username + " hasent sent any messages since the bot was last updated. (last updated at " + createdDate + ").");
 			}
 		}
+		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "VCTime"){
+			// to get string between * and * -- var messageContent = message.content.substr(message.content.indexOf('*') + 1, message.content.indexOf('*', message.content.indexOf('*') + 1) - 1).slice(0, -1);
+			if(totalVCTime[guildUsers.indexOf(message.mentions.users.first())] != null){
+				message.reply(message.mentions.users.first().username + " has spent " + totalVCTime[guildUsers.indexOf(message.mentions.users.first())] + "ms in voice chat since this bot was last updated (last updated at " + createdDate + ").");
+			}else{
+				message.reply(message.mentions.users.first().username + " hasent connected to voice chat since the bot was last updated. (last updated at " + createdDate + ").");
+			}
+		}
 	}
 	console.log("Channel: " + assignedChannel);
 	console.log(message.author.username + " has sent " + totalMessages[guildUsers.indexOf(message.author)] + " in this server.");
