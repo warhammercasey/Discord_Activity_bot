@@ -80,13 +80,14 @@ client.on('guildMemberAdd', member => {
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {
 	if(oldMember.voiceChannel == null && newMember.voiceChannel != null){
-		voiceChannelJoin[guildUsers.indexOf(newMember.user)] = new Date().getTime();
+		channel.send('Timer (ignore this)')
+			.then(message => voiceChannelJoin[guildUsers.indexOf(newMember.user)] = message.createdAt)
+			.catch(console.error);
 		console.log(newMember.user.username + " has joined a voice channel.");
-		console.log("Time is: " + (int) new Date().getTime());
 	}else if(oldMember.voiceChannel != null && newMember.voiceChannel == null){
-		totalVCTime[guildUsers.indexOf(newMember.user)] += toInt(new Date().getTime()) - toInt(voiceChannelJoin[guildUsers.indexOf(newMember.user)]);
-		console.log(newMember.user.username + " has spent " + toInt(new Date().getTime()) - toInt(voiceChannelJoin[guildUsers.indexOf(newMember.user)]) + "ms in voice chat.");
-		console.log("Time is: " + new Date().getTime());
+		channel.send('Timer (ignore this)')
+			.then(message => totalVCTime[guildUsers.indexOf(newMember.user)] += message.createdAt - voiceChannelJoin[guildUsers.indexOf(newMember.user)])
+			.catch(console.error);
 	}
 });
 
