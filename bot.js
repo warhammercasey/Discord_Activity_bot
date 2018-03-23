@@ -33,6 +33,30 @@ client.on('message', message => {
 	}
 	if(message.mentions.users.first() == client.user){
 		assignedChannel = message.channel;
+		assignedChannel.send('I have now been assigned to this channel.')
+			.then(message => console.log(`Sent start message: ${message.content}`))
+			.catch(console.error);
+		assignedChannel.send('To change the assigned channel just mention me somewhere else.')
+			.then(message => console.log(`Sent start message: ${message.content}`))
+			.catch(console.error);
+		assignedChannel.send('Commands:')
+			.then(message => console.log(`Sent start message: ${message.content}`))
+			.catch(console.error);
+		assignedChannel.send('!lastMsg <mention user> - Displays the last time that user sent a message.')
+			.then(message => console.log(`Sent start message: ${message.content}`))
+			.catch(console.error);
+		assignedChannel.send('!lastVC <mention user> - Displays the last time that user joined a voice channel.')
+			.then(message => console.log(`Sent start message: ${message.content}`))
+			.catch(console.error);
+		assignedChannel.send('!totalMessages <mention user> - Displays how many messages that user has sent.')
+			.then(message => console.log(`Sent start message: ${message.content}`))
+			.catch(console.error);
+		assignedChannel.send('!VCTime <mention user> - Displays how much time that user has spent in any voice chat.')
+			.then(message => console.log(`Sent start message: ${message.content}`))
+			.catch(console.error);
+		assignedChannel.send('Remember that until a database is set up, the data collected is temporary, and will be reset if the bot is restarted or updated.')
+			.then(message => console.log(`Sent start message: ${message.content}`))
+			.catch(console.error);
 	}
 	
 	
