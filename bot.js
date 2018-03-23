@@ -44,7 +44,7 @@ client.on('message', message => {
 	
 	
 	if(message.content.charAt(0) == '!') {
-		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "lastLog"){
+		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "lastMsg"){
 			if(message.mentions.users.first().lastMessage != null){
 				message.reply(String(message.mentions.users.first().lastMessage.createdAt));
 			}else{
@@ -53,7 +53,7 @@ client.on('message', message => {
 		}
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "totalMessages"){
 			// to get string between * and * -- var messageContent = message.content.substr(message.content.indexOf('*') + 1, message.content.indexOf('*', message.content.indexOf('*') + 1) - 1).slice(0, -1);
-			if(totalMessages[guildUsers.indexOf(message.mentions.users.first())] != null){
+			if(totalMessages[guildUsers.indexOf(message.mentions.users.first())] != undefined){
 				message.reply(message.mentions.users.first().username + " has sent " + totalMessages[guildUsers.indexOf(message.mentions.users.first())] + " messages since this bot was last updated (last updated at " + createdDate + ").");
 			}else{
 				message.reply(message.mentions.users.first().username + " hasent sent any messages since the bot was last updated. (last updated at " + createdDate + ").");
@@ -61,9 +61,16 @@ client.on('message', message => {
 		}
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "VCTime"){
 			// to get string between * and * -- var messageContent = message.content.substr(message.content.indexOf('*') + 1, message.content.indexOf('*', message.content.indexOf('*') + 1) - 1).slice(0, -1);
-			if(totalVCTime[guildUsers.indexOf(message.mentions.users.first())] != null){
+			if(totalVCTime[guildUsers.indexOf(message.mentions.users.first())] != undefined){
 				message.reply(message.mentions.users.first().username + " has spent " + totalVCTime[guildUsers.indexOf(message.mentions.users.first())] + "ms in voice chat since this bot was last updated (last updated at " + createdDate + ").");
 				console.log("Time joined voice channel: " + voiceChannelJoin[guildUsers.indexOf(message.mentions.users.first())]);
+			}else{
+				message.reply(message.mentions.users.first().username + " hasent connected to voice chat since the bot was last updated. (last updated at " + createdDate + ").");
+			}
+		}
+		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "lastVC"){
+			if(voiceChannelJoin[guildUsers.indexOf(message.mentions.users.first())] != undefined){
+				message.reply("The last time " + message.mentions.users.first().username + " joined a voice chat was " + voiceChannelJoin[guildUsers.indexOf(message.mentions.users.first())]);
 			}else{
 				message.reply(message.mentions.users.first().username + " hasent connected to voice chat since the bot was last updated. (last updated at " + createdDate + ").");
 			}
