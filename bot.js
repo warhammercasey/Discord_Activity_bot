@@ -5,7 +5,6 @@ const client = new Discord.Client();
 var disabled = false;
 
 client.on('message', message => {
-	console.log("message");
 	if(message.content.charAt(0) == '!') { //Is command
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "loginBotDisable"){
 			disabled = true;
@@ -16,7 +15,10 @@ client.on('message', message => {
 			console.log("Enabled");
 		}
 	}
-	if(!disabled){return;}
+	if(!disabled){
+		console.log("messaged but disabled");
+		return;
+	}
 	console.log(message.createdAt.toString().concat("|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length));
 	fs.writeFile("data.txt", message.createdAt.toString().concat("|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length), function(err) {
 			if(err) {
