@@ -19,7 +19,7 @@ client.on('message', message => {
 	date = (message.createdAt.getMonth() + 1).toString().concat("/", message.createdAt.getDate().toString(), "/", message.createdAt.getYear().toString().substr(1, 3), " ", message.createdAt.getUTCHours().toString(), ":", message.createdAt.getMinutes().toString(), ":", message.createdAt.getSeconds().toString());
 	
 	console.log(date.toString().concat("|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length));
-	fs.readFile('data.txt', (err, data) => {
+	f//s.readFile('data.txt', (err, data) => {
   		if (err) throw err;
 		fileData = data;
 	});
@@ -31,6 +31,7 @@ client.on('message', message => {
 		});
 		return;
 	}
+	console.log(fileData);
 	fs.writeFile("data.txt", fileData.toString().concat(date.toString(), "|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length) + "\r\n", function(err) {
 		if(err) {
 			return console.log(err);
