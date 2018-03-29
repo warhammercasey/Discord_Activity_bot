@@ -16,7 +16,7 @@ client.on('message', message => {
 			console.log("Enabled");
 		}
 	}
-	if(!disabled){
+	if(disabled) {
 		console.log("messaged but disabled");
 		return;
 	}
