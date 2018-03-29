@@ -67,7 +67,7 @@ client.on('message', message => {
 	}
 	if(!canCheckMessages){return;}
 	
-	console.log(message.createdAt.concat("|", "text", message.member.user.id.toString, "|", message.member.user.username.toString, "|", message.channel.id.toString(), "|", message.channel.toString(), "|", message.content.length));
+	console.log(message.createdAt.toString().concat("|", "text", message.member.user.id.toString, "|", message.member.user.username.toString, "|", message.channel.id.toString(), "|", message.channel.toString(), "|", message.content.length));
 	fs.writeFile("data.txt", message.createdAt.concat("|", "text", message.member.user.id.toString, "|", message.member.user.username.toString, "|", message.channel.id.toString(), "|", message.channel.toString(), "|", message.content.length), function(err) {
 			if(err) {
 				return console.log(err);
