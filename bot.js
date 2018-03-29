@@ -4,6 +4,15 @@ const client = new Discord.Client();
 
 var fileData;
 
+client.on('ready', () => {
+	console.log('I am ready!');
+	fs.writeFile("data.txt", "", function(err) {
+		if(err) {
+			return console.log(err);
+		}
+	});
+});
+
 client.on('message', message => {
 	console.log(message.createdAt.toString().concat("|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length));
 	fs.readFile('data.txt', (err, data) => {
