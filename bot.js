@@ -5,9 +5,6 @@ const client = new Discord.Client();
 var fileData;
 
 var date;
-var dateHours;
-var dateMinutes;
-var dateSeconds;
 
 client.on('ready', () => {
 	console.log('I am ready!');
@@ -19,13 +16,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-	if(message.createdAt.getHours() + 1 > 12){
-		dateHours = message.createdAt.getHours() - 11;
-	}else{
-		dateHours = message.createdAt.getHours() + 1;
-	}
-	console.log("Raw hours: " + message.createdAt.getHours() + ", Modified hours: " + dateHours + ", UTC hours: " + message.createdAt.getUTCHours());
-	date = (message.createdAt.getMonth() + 1).toString().concat("/", message.createdAt.getDate().toString(), "/", message.createdAt.getYear().toString().substr(1, 3), " ", dateHours.toString(), ":", message.createdAt.getMinutes().toString(), ":", message.createdAt.getSeconds().toString());
+	date = (message.createdAt.getMonth() + 1).toString().concat("/", message.createdAt.getDate().toString(), "/", message.createdAt.getYear().toString().substr(1, 3), " ", message.createdAt.getUTCHours().toString(), ":", message.createdAt.getMinutes().toString(), ":", message.createdAt.getSeconds().toString());
 	
 	console.log(date.toString().concat("|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length));
 	fs.readFile('data.txt', (err, data) => {
@@ -33,14 +24,14 @@ client.on('message', message => {
 		fileData = data;
 	});
 	if(fileData == undefined){
-		fs.writeFile("data.txt", date.toString().concat("|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length), function(err) {
+		fs.writeFile("data.txt", date.toString().concat("|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length) + "\r\n", function(err) {
 			if(err) {
 				return console.log(err);
 			}
 		});
 		return;
 	}
-	fs.writeFile("data.txt", fileData.toString().concat(" - ", date.toString(), "|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length), function(err) {
+	fs.writeFile("data.txt", fileData.toString().concat(date.toString(), "|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length) + "\r\n", function(err) {
 		if(err) {
 			return console.log(err);
 		}
