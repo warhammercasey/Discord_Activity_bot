@@ -5,6 +5,7 @@ const client = new Discord.Client();
 var disabled = false;
 
 client.on('message', message => {
+	console.log("message");
 	if(message.content.charAt(0) == '!') { //Is command
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "loginBotDisable"){
 			disabled = true;
