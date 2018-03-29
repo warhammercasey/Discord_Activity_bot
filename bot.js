@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const fs = require('fs');
 const client = new Discord.Client();
 
 var createdDate = new Date();
@@ -65,19 +66,15 @@ client.on('message', message => {
 		canCheckMessages = true;
 	}
 	if(!canCheckMessages){return;}
-	if(message.content == '5246089924876636756239587'){
-		if(message.deletable){
-			message.delete();
-		}else{
-			assignedChannel.send('Please give me the permissions to delete my own messages.')
-			.then(message => console.log(`Sent message: ${message.content}`))
-			.catch(console.error);
-		}
-	}
 	
-	logStrings.push(message.createdAt.concat("|", "text", message.member.user.id.toString, "|", message.member.user.username.toString, "|", message.channel.id.toString(), "|", message.channel.toString(), "|", message.content.length));
-	
-	if(message.content.charAt(0) == '!') {
+	console.log(message.createdAt.concat("|", "text", message.member.user.id.toString, "|", message.member.user.username.toString, "|", message.channel.id.toString(), "|", message.channel.toString(), "|", message.content.length));
+	fs.writeFile("data.txt", message.createdAt.concat("|", "text", message.member.user.id.toString, "|", message.member.user.username.toString, "|", message.channel.id.toString(), "|", message.channel.toString(), "|", message.content.length)), function(err) {
+			if(err) {
+				return console.log(err);
+			}
+			console.log("The file was saved!");
+		}); 
+	if(message.content.charAt(0) == '!') { //Is command
 		
 	}
 	console.log("Channel: " + assignedChannel);
@@ -91,14 +88,23 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {
+	var currentTime = new Date();
 	if(oldMember.voiceChannel == null && newMember.voiceChannel != null){
-		assignedChannel.send('5246089924876636756239587')
-			.then(message => voiceChannelJoin[guildUsers.indexOf(newMember.user)] = message.createdAt)
-			.catch(console.error);
+		console.log(currentTime.toString().concat("|", "VoiceJoin", newMember.user.id.toString, "|", newMember.user.username.toString, "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString());
+		fs.writeFile("data.txt", currentTime.toString().concat("|", "VoiceJoin", newMember.user.id.toString, "|", newMember.user.username.toString, "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString()), function(err) {
+			if(err) {
+				return console.log(err);
+			}
+			console.log("The file was saved!");
+		}); 
 	}else if(oldMember.voiceChannel != null && newMember.voiceChannel == null){
-		assignedChannel.send('5246089924876636756239587')
-			.then(message => voiceChannelLeave[guildUsers.indexOf(newMember.user)] = message.createdAt)
-			.catch(console.error);
+		console.log(currentTime.toString().concat("|", "VoiceJoin", newMember.user.id.toString, "|", newMember.user.username.toString, "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString());
+		fs.writeFile("data.txt", currentTime.toString().concat("|", "VoiceLeave", oldMember.user.id.toString, "|", oldMember.user.username.toString, "|", oldMember.voiceChannel.id.toString(), "|", oldMember.voiceChannel.name.toString()), function(err) {
+			if(err) {
+				return console.log(err);
+			}
+			console.log("The file was saved!");
+		}); 
 	}
 });
 
