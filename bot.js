@@ -31,7 +31,7 @@ client.on('message', message => {
 		});
 		return;
 	}
-	console.log(fileData);
+	console.log(fileData.toString());
 	fs.writeFile("data.txt", fileData.toString().concat(date.toString(), "|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length) + "\r\n", function(err) {
 		if(err) {
 			return console.log(err);
