@@ -17,7 +17,7 @@ client.on('message', message => {
 	console.log(message.createdAt.toString().concat("|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length));
 	fs.readFile('data.txt', (err, data) => {
   		if (err) throw err;
-  		console.log(data);
+  		console.log("Data: " + data);
 		fileData = data;
 	});
 	if(fileData == undefined){
