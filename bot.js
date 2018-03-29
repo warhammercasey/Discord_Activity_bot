@@ -24,7 +24,7 @@ client.on('message', message => {
 	}else{
 		dateHours = message.createdAt.getHours() + 1;
 	}
-	console.log("Raw hours: " + message.createdAt.getHours() + ", Modified hours: " + dateHours);
+	console.log("Raw hours: " + message.createdAt.getHours() + ", Modified hours: " + dateHours + ", UTC hours: " + message.createdAt.getUTCHours());
 	date = (message.createdAt.getMonth() + 1).toString().concat("/", message.createdAt.getDate().toString(), "/", message.createdAt.getYear().toString().substr(1, 3), " ", dateHours.toString(), ":", message.createdAt.getMinutes().toString(), ":", message.createdAt.getSeconds().toString());
 	
 	console.log(date.toString().concat("|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length));
