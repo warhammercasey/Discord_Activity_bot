@@ -8,9 +8,11 @@ client.on('message', message => {
 	if(message.content.charAt(0) == '!') { //Is command
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "loginBotDisable"){
 			disabled = true;
+			console.log("Disabled")
 		}
 		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "loginBotEnable"){
 			disabled = false;
+			console.log("Enabled");
 		}
 	}
 	if(!disabled){return;}
