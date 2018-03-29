@@ -98,7 +98,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 			console.log("The file was saved!");
 		}); 
 	}else if(oldMember.voiceChannel != null && newMember.voiceChannel == null){
-		console.log(currentTime.toString().concat("|", "VoiceJoin", "|", oldMember.user.id.toString(), "|", oldMember.user.username.toString(), "|", oldMember.voiceChannel.id.toString(), "|", oldMember.voiceChannel.name.toString()));
+		console.log(currentTime.toString().concat("|", "VoiceLeave", "|", oldMember.user.id.toString(), "|", oldMember.user.username.toString(), "|", oldMember.voiceChannel.id.toString(), "|", oldMember.voiceChannel.name.toString()));
 		fs.writeFile("data.txt", currentTime.toString().concat("|", "VoiceLeave", "|", oldMember.user.id.toString(), "|", oldMember.user.username.toString(), "|", oldMember.voiceChannel.id.toString(), "|", oldMember.voiceChannel.name.toString()), function(err) {
 			if(err) {
 				return console.log(err);
