@@ -90,7 +90,7 @@ client.on('guildMemberAdd', member => {
 client.on('voiceStateUpdate', (oldMember, newMember) => {
 	var currentTime = new Date();
 	if(oldMember.voiceChannel == null && newMember.voiceChannel != null){
-		console.log(currentTime.toString().concat("|", "VoiceJoin", newMember.user.id.toString, "|", newMember.user.username.toString, "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString());
+		console.log(currentTime.toString().concat("|", "VoiceJoin", newMember.user.id.toString, "|", newMember.user.username.toString, "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString()));
 		fs.writeFile("data.txt", currentTime.toString().concat("|", "VoiceJoin", newMember.user.id.toString, "|", newMember.user.username.toString, "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString()), function(err) {
 			if(err) {
 				return console.log(err);
@@ -98,7 +98,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 			console.log("The file was saved!");
 		}); 
 	}else if(oldMember.voiceChannel != null && newMember.voiceChannel == null){
-		console.log(currentTime.toString().concat("|", "VoiceJoin", newMember.user.id.toString, "|", newMember.user.username.toString, "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString());
+		console.log(currentTime.toString().concat("|", "VoiceJoin", newMember.user.id.toString, "|", newMember.user.username.toString, "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString()));
 		fs.writeFile("data.txt", currentTime.toString().concat("|", "VoiceLeave", oldMember.user.id.toString, "|", oldMember.user.username.toString, "|", oldMember.voiceChannel.id.toString(), "|", oldMember.voiceChannel.name.toString()), function(err) {
 			if(err) {
 				return console.log(err);
