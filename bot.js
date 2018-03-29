@@ -50,14 +50,14 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 			fileData = data;
 		});
 		if(fileData == undefined){
-			fs.writeFile("data.txt", currentTime.toString().concat("|", "VoiceJoin", "|", newMember.user.id.toString(), "|", newMember.user.username.toString(), "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString()), function(err) {
+			fs.writeFile("data.txt", currentTime.toString().concat("|", "VoiceJoin", "|", newMember.user.id.toString(), "|", newMember.user.username.toString(), "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString()) + "\r\n", function(err) {
 				if(err) {
 					return console.log(err);
 				}
 			});
 			return;
 		}
-		fs.writeFile("data.txt", fileData.toString().concat(currentTime.toString(), "|", "VoiceJoin", "|", newMember.user.id.toString(), "|", newMember.user.username.toString(), "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString()), function(err) {
+		fs.writeFile("data.txt", fileData.toString().concat(currentTime.toString(), "|", "VoiceJoin", "|", newMember.user.id.toString(), "|", newMember.user.username.toString(), "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString()) + "\r\n", function(err) {
 			if(err) {
 				return console.log(err);
 			}
@@ -69,14 +69,14 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 			fileData = data;
 		});
 		if(fileData == undefined){
-			fs.writeFile("data.txt", currentTime.toString().concat("|", "VoiceLeave", "|", oldMember.user.id.toString(), "|", oldMember.user.username.toString(), "|", oldMember.voiceChannel.id.toString(), "|", oldMember.voiceChannel.name.toString()), function(err) {
+			fs.writeFile("data.txt", currentTime.toString().concat("|", "VoiceLeave", "|", oldMember.user.id.toString(), "|", oldMember.user.username.toString(), "|", oldMember.voiceChannel.id.toString(), "|", oldMember.voiceChannel.name.toString()) + "\r\n", function(err) {
 				if(err) {
 					return console.log(err);
 				}
 			});
 			return;
 		}
-		fs.writeFile("data.txt", fileData.toString().concat(currentTime.toString(), "|", "VoiceLeave", "|", oldMember.user.id.toString(), "|", oldMember.user.username.toString(), "|", oldMember.voiceChannel.id.toString(), "|", oldMember.voiceChannel.name.toString()), function(err) {
+		fs.writeFile("data.txt", fileData.toString().concat(currentTime.toString(), "|", "VoiceLeave", "|", oldMember.user.id.toString(), "|", oldMember.user.username.toString(), "|", oldMember.voiceChannel.id.toString(), "|", oldMember.voiceChannel.name.toString()) + "\r\n", function(err) {
 			if(err) {
 				return console.log(err);
 			}
