@@ -44,7 +44,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 	var currentTime = new Date();
 	currentTime = (currentTime.getMonth() + 1).toString().concat("/", currentTime.getDate().toString(), "/", currentTime.getYear().toString().substr(1, 3), " ", currentTime.getUTCHours().toString(), ":", currentTime.getMinutes().toString(), ":", currentTime.getSeconds().toString());
 	if(oldMember.voiceChannel == null && newMember.voiceChannel != null){
-		console.log(currentTime.toString().concat("|", "VoiceJoin", "|", newMember.user.id.toString(), "|", newMember.user.username.toString(), "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString()));
+		//console.log(currentTime.toString().concat("|", "VoiceJoin", "|", newMember.user.id.toString(), "|", newMember.user.username.toString(), "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString()));
 		fs.readFile('data.txt', (err, data) => {
   			if (err) throw err;
 			fileData = data;
@@ -56,13 +56,13 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 			}
 		}); 
 		}
-		fs.writeFile("data.txt", fileData.toString().concat(" - ", currentTime.toString(), "|", "VoiceJoin", "|", newMember.user.id.toString(), "|", newMember.user.username.toString(), "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString()), function(err) {
+		fs.writeFile("data.txt", fileData.toString().concat(currentTime.toString(), "|", "VoiceJoin", "|", newMember.user.id.toString(), "|", newMember.user.username.toString(), "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString()), function(err) {
 			if(err) {
 				return console.log(err);
 			}
 		}); 
 	}else if(oldMember.voiceChannel != null && newMember.voiceChannel == null){
-		console.log(currentTime.toString().concat("|", "VoiceLeave", "|", oldMember.user.id.toString(), "|", oldMember.user.username.toString(), "|", oldMember.voiceChannel.id.toString(), "|", oldMember.voiceChannel.name.toString()));
+		//console.log(currentTime.toString().concat("|", "VoiceLeave", "|", oldMember.user.id.toString(), "|", oldMember.user.username.toString(), "|", oldMember.voiceChannel.id.toString(), "|", oldMember.voiceChannel.name.toString()));
 		fs.readFile('data.txt', (err, data) => {
   			if (err) throw err;
 			fileData = data;
@@ -74,7 +74,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 				}
 			}); 
 		}
-		fs.writeFile("data.txt", fileData.toString().concat(" - ", currentTime.toString(), "|", "VoiceLeave", "|", oldMember.user.id.toString(), "|", oldMember.user.username.toString(), "|", oldMember.voiceChannel.id.toString(), "|", oldMember.voiceChannel.name.toString()), function(err) {
+		fs.writeFile("data.txt", fileData.toString().concat(currentTime.toString(), "|", "VoiceLeave", "|", oldMember.user.id.toString(), "|", oldMember.user.username.toString(), "|", oldMember.voiceChannel.id.toString(), "|", oldMember.voiceChannel.name.toString()), function(err) {
 			if(err) {
 				return console.log(err);
 			}
