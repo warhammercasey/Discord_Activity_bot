@@ -82,10 +82,6 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 			}
 		}); 
 	}
-	fs.readFile('data.txt', (err, data) => {
-		if (err) throw err;
-		console.log(data.toString());
-	});
 });
 
 client.login(process.env.BOT_TOKEN);
