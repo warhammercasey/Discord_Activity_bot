@@ -22,7 +22,7 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-	console.log('Month: " + message.createdAt.getMonth().toString());
+	//console.log('Month: " + message.createdAt.getMonth().toString());
 	
 	
 	console.log(message.createdAt.toString().concat("|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length));
