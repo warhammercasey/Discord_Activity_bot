@@ -2,21 +2,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const client = new Discord.Client();
 
-var disabled = false;
-
 client.on('message', message => {
-	if(message.content.charAt(0) == '!') { //Is command
-		console.log(message.content.substr(1, message.content.indexOf(" ") - 1));
-		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "loginBotDisable"){
-			disabled = true;
-			console.log("Disabled")
-		}
-		if(message.content.substr(1, message.content.indexOf(" ") - 1) == "loginBotEnable"){
-			disabled = false;
-			console.log("Enabled");
-		}
-	}
-	if(disabled) {return;}
 	console.log(message.createdAt.toString().concat("|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length));
 	fs.writeFile("data.txt", message.createdAt.toString().concat("|", "text", "|", message.member.user.id.toString(), "|", message.member.user.username.toString(), "|", message.channel.id.toString(), "|", message.channel.name.toString(), "|", message.content.length), function(err) {
 			if(err) {
@@ -28,7 +14,6 @@ client.on('message', message => {
 });
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {
-	if(!disabled){return;}
 	var currentTime = new Date();
 	if(oldMember.voiceChannel == null && newMember.voiceChannel != null){
 		console.log(currentTime.toString().concat("|", "VoiceJoin", "|", newMember.user.id.toString(), "|", newMember.user.username.toString(), "|", newMember.voiceChannel.id.toString(), "|", newMember.voiceChannel.name.toString()));
