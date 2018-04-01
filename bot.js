@@ -1,6 +1,12 @@
 const Discord = require('discord.js');
 const fs = require('fs');
 const client = new Discord.Client();
+const auth = require('./auth.json');
+
+const client = new Discord.Client({
+	token: auth.token,
+	autorun: true
+});
 
 var fileData;
 
