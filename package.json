@@ -15,7 +15,7 @@
 		"git": "^0.1.5",
 		"libsodium-wrappers": "^0.7.3",
 		"node-opus": "^0.2.7",
-		"opusscript": "^0.06",
+		"opusscript": "^0.0.6",
 		"request": "^2.85.0",
 		"sodium": "^2.0.3",
 		"uws": "^9.14.0"
